@@ -1,0 +1,89 @@
+src/
+├── assets/
+│   ├── images/
+│   └── styles/
+│       └── index.css
+│
+├── components/
+│   ├── common/
+│   │   ├── Navbar.jsx
+│   │   ├── Footer.jsx
+│   │   ├── LoadingSpinner.jsx
+│   │   ├── CarCard.jsx
+│   │   ├── StarRating.jsx
+│   │   ├── Button.jsx
+│   │   ├── Table.jsx
+│   │   └── Modal.jsx
+│   │
+│   ├── forms/
+│   │   ├── LoginForm.jsx
+│   │   ├── RegisterForm.jsx
+│   │   ├── AddCarForm.jsx
+│   │   └── BookingForm.jsx
+│   │
+│   ├── home/
+│   │   ├── Banner.jsx
+│   │   ├── WhyChooseUs.jsx
+│   │   ├── RecentListings.jsx
+│   │   └── ExtraSections/
+│   │       ├── SpecialOffers.jsx
+│   │       └── Testimonials.jsx
+│   │
+│   ├── cars/
+│   │   ├── CarGrid.jsx
+│   │   ├── CarList.jsx
+│   │   ├── CarDetails.jsx
+│   │   ├── CarFilters.jsx
+│   │   └── SearchBar.jsx
+│   │
+│   └── bookings/
+│       ├── BookingTable.jsx
+│       ├── BookingChart.jsx
+│       ├── BookingModal.jsx
+│       └── DatePicker.jsx
+│
+├── contexts/
+│   ├── AuthContext.jsx
+│   ├── BookingContext.jsx
+│   └── CarContext.jsx
+│
+├── hooks/
+│   ├── useAuth.js
+│   ├── useBooking.js
+│   ├── useCars.js
+│   ├── usePagination.js
+│   └── useSearch.js
+│
+├── layouts/
+│   ├── MainLayout.jsx
+│   └── DashboardLayout.jsx
+│
+├── pages/
+│   ├── Home.jsx
+│   ├── AvailableCars.jsx
+│   ├── AddCar.jsx
+│   ├── MyCars.jsx
+│   ├── CarDetails.jsx
+│   ├── MyBookings.jsx
+│   ├── Login.jsx
+│   ├── Register.jsx
+│   └── NotFound.jsx
+│
+├── routes/
+│   ├── PrivateRoute.jsx
+│   └── Routes.jsx
+│
+├── services/
+│   ├── auth.service.js
+│   ├── car.service.js
+│   └── booking.service.js
+│
+├── utils/
+│   ├── axios.config.js
+│   ├── firebase.config.js
+│   ├── toast.js
+│   ├── dateFormatter.js
+│   └── priceCalculator.js
+│
+├── App.jsx
+└── main.jsx
