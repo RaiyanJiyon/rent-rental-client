@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { authContext } from '../../contexts/AuthProvider';
+import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,11 +33,12 @@ const Navbar = () => {
                     {
                         user ?
                             <div className='flex items-center gap-4'>
-                                <div className="avatar">
-                                    <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
+                                <div className="avatar" data-tooltip-id="avatar-tooltip">
+                                    <div className="ring-error ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
                                         <img className='z-10 w-full h-full' src={`${user.photoURL}`} />
                                     </div>
                                 </div>
+                                <Tooltip className="z-10" id="avatar-tooltip">{user.displayName}</Tooltip>
 
                                 <button onClick={handleSignout} className="btn btn-sm md:btn-md mr-2 bg-gradient-to-r from-[#FF3600] to-[#ff3700d7] text-white font-bold hover:bg-gradient-to-l transition-all duration-300 border-none">Logout</button>
 

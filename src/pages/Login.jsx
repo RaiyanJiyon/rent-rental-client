@@ -1,11 +1,37 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { authContext } from "../contexts/AuthProvider";
 
 const Login = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    const {signinUser} = useContext(authContext);
+    const navigate = useNavigate();
+
+    const handleLoginForm = e => {
+        e.preventDefault();
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+
+        const email = formData.get('email');
+        const password = formData.get('password');
+
+        console.log(email, password);
+
+        signinUser(email, password)
+        .then(userCredential => {
+            const user = userCredential.user;
+            console.log('Login done', user);
+            navigate('/');
+        })
+        .catch(error => {
+            console.error(error);
+        })
+    }
 
     return (
         <div className="bg-[#191919] py-10">
@@ -15,9 +41,9 @@ const Login = () => {
             <div className="w-full max-w-md mx-auto bg-[#060b17] p-8 space-y-3 rounded-xl">
                 <h1 className="text-3xl font-bold text-center text-[#ff3700d7] ">Welcome Back</h1>
                 <p className="text-center text-base-300 font-medium pb-5">Please enter your details to sign in</p>
-                <form className="space-y-6">
+                <form onSubmit={handleLoginForm} className="space-y-6">
                     <div className="space-y-1 text-sm">
-                        <label htmlFor="username" className="block text-white font-bold">Email</label>
+                        <label htmlFor="email" className="block text-white font-bold">Email</label>
                         <input type="email" name="email" id="email" placeholder="Enter your email" className="w-full bg-[#1F2937] text-white px-4 py-3 rounded-md focus:border-red-600" />
                     </div>
                     <div className="space-y-1 text-sm">
