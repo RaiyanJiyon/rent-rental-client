@@ -8,7 +8,7 @@ const Login = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const {signinUser} = useContext(authContext);
+    const {signinUser, createGoogleAccount} = useContext(authContext);
     const navigate = useNavigate();
 
     const handleLoginForm = e => {
@@ -30,6 +30,17 @@ const Login = () => {
         })
         .catch(error => {
             console.error(error);
+        })
+    }
+
+    const handleGoogleSignUp = () => {
+        createGoogleAccount()
+        .then(() => {
+            console.log('Successfully create account with google');
+            navigate('/');
+        })
+        .catch(error => {
+            console.error(error)
         })
     }
 
@@ -61,7 +72,7 @@ const Login = () => {
                     <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
                 </div>
                 <div className="flex justify-center space-x-4">
-                    <button aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 hover:border-gray-500">
+                    <button onClick={handleGoogleSignUp} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 hover:border-gray-500">
                         <img className="w-5 h-5" src="https://neodrive-be91c.web.app/assets/google-Bp_336oh.png" alt="google logo" />
                         <p className="text-white font-bold">Login with Google</p>
                     </button>

@@ -3,8 +3,13 @@ import Banner from "../components/home/Banner";
 import ExperiencedDrivers from "../components/home/ExtraSections/ExperiencedDrivers";
 import LuxuryRides from "../components/home/ExtraSections/LuxuryRides";
 import WhyChooseUs from "../components/home/WhyChooseUs";
+import { useEffect } from "react";
 
 const Home = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div>
             <Helmet>
