@@ -11,6 +11,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import AddCar from "../pages/AddCar";
 import MyCars from "../pages/MyCars";
 import MyBookings from "../pages/MyBookings";
+import ResetPassword from "../pages/ResetPassword";
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
             {
                 path: "register",
                 element: <Register />
+            },
+            {
+                path: "forget-password",
+                element: <ResetPassword />
             },
             {
                 path: "dashboard",

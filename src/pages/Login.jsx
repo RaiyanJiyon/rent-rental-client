@@ -45,6 +45,15 @@ const Login = () => {
             })
     }
 
+    const navigateToForgetPassword = () => {
+        const emailInput = document.getElementById('email');
+        navigate('/forget-password', {
+            state: {
+                email: emailInput.value
+            }
+        })
+    }
+
     return (
         <div className="bg-[#191919] py-10">
             <Helmet>
@@ -61,8 +70,8 @@ const Login = () => {
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block text-white font-bold">Password</label>
                         <input type="password" name="password" id="password" placeholder="Enter your password" className="w-full bg-[#1F2937] text-white px-4 py-3 rounded-md focus:border-red-600" />
-                        <div className="flex justify-end text-xs text-white">
-                            <a rel="noopener noreferrer" href="#">Forgot Password?</a>
+                        <div onClick={navigateToForgetPassword} className="flex justify-end text-xs text-white">
+                            <Link rel="noopener noreferrer" to={'/forget-password'}>Forgot Password?</Link>
                         </div>
                     </div>
                     <button className="block w-full p-3 text-center rounded-sm bg-gradient-to-r from-[#FF3600] to-[#ff3700d7] text-white font-bold hover:bg-gradient-to-l transition-all duration-300 border-none">Login</button>

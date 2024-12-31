@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import Banner from "../components/home/Banner";
 import ExperiencedDrivers from "../components/home/ExtraSections/ExperiencedDrivers";
 import LuxuryRides from "../components/home/ExtraSections/LuxuryRides";
