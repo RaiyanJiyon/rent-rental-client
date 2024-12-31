@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../contexts/AuthProvider";
 
 const Login = () => {
@@ -8,8 +8,9 @@ const Login = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const {signinUser, createGoogleAccount} = useContext(authContext);
+    const { signinUser, createGoogleAccount } = useContext(authContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleLoginForm = e => {
         e.preventDefault();
@@ -23,25 +24,25 @@ const Login = () => {
         console.log(email, password);
 
         signinUser(email, password)
-        .then(userCredential => {
-            const user = userCredential.user;
-            console.log('Login done', user);
-            navigate('/');
-        })
-        .catch(error => {
-            console.error(error);
-        })
+            .then(userCredential => {
+                const user = userCredential.user;
+                console.log('Login done', user);
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     const handleGoogleSignUp = () => {
         createGoogleAccount()
-        .then(() => {
-            console.log('Successfully create account with google');
-            navigate('/');
-        })
-        .catch(error => {
-            console.error(error)
-        })
+            .then(() => {
+                console.log('Successfully create account with google');
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
 
     return (

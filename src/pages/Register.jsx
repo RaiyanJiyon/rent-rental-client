@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { Form, Link, useNavigate } from "react-router-dom";
+import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../contexts/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
@@ -11,6 +11,7 @@ const Register = () => {
 
     const { createUser } = useContext(authContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleRegisterForm = (e) => {
         e.preventDefault();
@@ -39,7 +40,7 @@ const Register = () => {
                     photoURL: photoUrl
                 }).then(() => {
                     console.log('Profile updated:', user);
-                    navigate('/');
+                    navigate(location?.state ? location.state : '/');
                 }).catch((error) => {
                     console.error('Error updating profile:', error);
                 });
