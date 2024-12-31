@@ -1,4 +1,5 @@
 import Banner from "../components/home/Banner";
+import ExperiencedDrivers from "../components/home/ExtraSections/ExperiencedDrivers";
 import LuxuryRides from "../components/home/ExtraSections/LuxuryRides";
 import WhyChooseUs from "../components/home/WhyChooseUs";
 
@@ -13,6 +14,9 @@ const Home = () => {
             </div>
             <div>
                 <LuxuryRides />
+            </div>
+            <div>
+                <ExperiencedDrivers />
             </div>
         </div>
     );
