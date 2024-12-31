@@ -1,4 +1,5 @@
 import Banner from "../components/home/Banner";
+import LuxuryRides from "../components/home/ExtraSections/LuxuryRides";
 import WhyChooseUs from "../components/home/WhyChooseUs";
 
 const Home = () => {
@@ -9,6 +10,9 @@ const Home = () => {
             </div>
             <div>
                 <WhyChooseUs />
+            </div>
+            <div>
+                <LuxuryRides />
             </div>
         </div>
     );
