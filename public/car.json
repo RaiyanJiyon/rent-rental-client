@@ -1,0 +1,107 @@
+[
+    {
+        "carModel": "Toyota Corolla",
+        "dailyRentalPrice": 50,
+        "availabilityDate": "2024-12-31",
+        "vehicleRegistrationNumber": "NEW-YORK-D-10-7777",
+        "features": [
+            "GPS",
+            "AC",
+            "Bluetooth Connectivity"
+        ],
+        "description": "A compact and fuel-efficient car, perfect for city driving.",
+        "bookingCount": 0,
+        "imageUrl": "https://i.ibb.co.com/YbGNXHt/toyota-corolla.jpg",
+        "location": "New York, NY",
+        "saveUserDetails": {
+            "name": "John Doe",
+            "email": "johndoe@example.com",
+            "photo": "https://neodrive-be91c.web.app/assets/team2-BTMvrJwq.jpg"
+        },
+        "bookingStatus": "Pending"
+    },
+    {
+        "carModel": "Honda Civic",
+        "dailyRentalPrice": 55,
+        "availabilityDate": "2024-12-29",
+        "vehicleRegistrationNumber": "LONDON-D-11-9999",
+        "features": [
+            "AC",
+            "Heated Seats",
+            "Cruise Control"
+        ],
+        "description": "A reliable sedan with advanced safety features.",
+        "bookingCount": 0,
+        "imageUrl": "https://i.ibb.co.com/2SRgnZS/honda-civic.jpg",
+        "location": "Los Angeles, CA",
+        "saveUserDetails": {
+            "name": "Jane Smith",
+            "email": "janesmith@example.com",
+            "photo": "https://neodrive-be91c.web.app/assets/team1-DiVnwyeY.jpg"
+        },
+        "bookingStatus": "Pending"
+    },
+    {
+        "carModel": "Ford Mustang",
+        "dailyRentalPrice": 100,
+        "availabilityDate": "2025-01-02",
+        "vehicleRegistrationNumber": "DHAKA-D-11-9299",
+        "features": [
+            "GPS",
+            "Convertible",
+            "Premium Audio"
+        ],
+        "description": "A powerful sports car for an exhilarating ride.",
+        "bookingCount": 0,
+        "imageUrl": "https://i.ibb.co.com/nm44yv8/ford-mustang.jpg",
+        "location": "Miami, FL",
+        "saveUserDetails": {
+            "name": "Mike Johnson",
+            "email": "mikejohnson@example.com",
+            "photo": "https://neodrive-be91c.web.app/assets/team4-BHCgJLUC.jpg"
+        },
+        "bookingStatus": "Pending"
+    },
+    {
+        "carModel": "Chevrolet Tahoe",
+        "dailyRentalPrice": 85,
+        "availabilityDate": "2025-01-05",
+        "vehicleRegistrationNumber": "NEW-YORK-D-11-9999",
+        "features": [
+            "GPS",
+            "AC",
+            "All-Wheel Drive"
+        ],
+        "description": "A spacious SUV for family road trips and off-road adventures.",
+        "bookingCount": 0,
+        "imageUrl": "https://i.ibb.co.com/gRgLncV/chevrolet-tahoe.jpg",
+        "location": "Denver, CO",
+        "saveUserDetails": {
+            "name": "Emma Wilson",
+            "email": "emmawilson@example.com",
+            "photo": "https://neodrive-be91c.web.app/assets/team3-CrbMcU2_.jpg"
+        },
+        "bookingStatus": "Pending"
+    },
+    {
+        "carModel": "Tesla Model 3",
+        "dailyRentalPrice": 120,
+        "availabilityDate": "2024-12-28",
+        "vehicleRegistrationNumber": "CHITTAGONG-D-11-9999",
+        "features": [
+            "GPS",
+            "Autopilot",
+            "Electric"
+        ],
+        "description": "A cutting-edge electric car with autonomous driving features.",
+        "bookingCount": 0,
+        "imageUrl": "https://i.ibb.co.com/ZxgF38D/tesla-model-3.webp",
+        "location": "San Francisco, CA",
+        "saveUserDetails": {
+            "name": "Sophia Davis",
+            "email": "sophiadavis@example.com",
+            "photo": "https://neodrive-be91c.web.app/assets/team2-BTMvrJwq.jpg"
+        },
+        "bookingStatus": "Pending"
+    }
+]
