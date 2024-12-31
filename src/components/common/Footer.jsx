@@ -37,7 +37,7 @@ const Footer = () => {
             <div>
                 <div className='border border-t-white mt-3'></div>
                 <div className='w-11/12 mx-auto text-center pt-6 space-y-2'>
-                    <p className='text-xs '>© 2024 CouponHive. All Rights Reserved.</p>
+                    <p className='text-xs '>© 2024 NeoDrive. All Rights Reserved.</p>
                     <p className='text-xs '>Privacy PolicyTerms and Conditions</p>
                 </div>
             </div>
