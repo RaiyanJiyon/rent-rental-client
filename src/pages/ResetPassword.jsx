@@ -36,7 +36,7 @@ const ResetPassword = () => {
                 <form onSubmit={handleResetPasswordForm} className="space-y-6">
                     <div className="space-y-1 text-sm">
                         <label htmlFor="email" className="block text-white font-bold mb-2">Email Address</label>
-                        <input onChange={(e) => e.target.value} type="email" name="email" id="email" value={email} placeholder="Enter your email" className="w-full bg-[#1F2937] text-white px-4 py-3 rounded-md focus:border-red-600" />
+                        <input onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" value={email} placeholder="Enter your email" className="w-full bg-[#1F2937] text-white px-4 py-3 rounded-md focus:border-red-600" />
                     </div>
                     <button className="block w-full p-2 text-center rounded-lg bg-gradient-to-r from-[#FF3600] to-[#ff3700d7] text-white font-bold hover:bg-gradient-to-l transition-all duration-300 border-none">Reset Password</button>
                 </form>
