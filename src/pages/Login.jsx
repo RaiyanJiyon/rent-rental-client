@@ -1,13 +1,17 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-    useEffect(()=> {
+    useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    
+
     return (
         <div className="bg-[#191919] py-10">
+            <Helmet>
+                <title>Login | NeoDrive</title>
+            </Helmet>
             <div className="w-full max-w-md mx-auto bg-[#060b17] p-8 space-y-3 rounded-xl">
                 <h1 className="text-3xl font-bold text-center text-[#ff3700d7] ">Welcome Back</h1>
                 <p className="text-center text-base-300 font-medium pb-5">Please enter your details to sign in</p>
