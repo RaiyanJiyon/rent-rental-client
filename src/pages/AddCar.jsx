@@ -71,8 +71,6 @@ const AddCar = () => {
                 text: "Failed to add car. Please try again.",
             });
         }
-
-        console.log("Form submitted with selected file:", selectedFile);
     };
 
     const onDrop = (acceptedFiles) => {

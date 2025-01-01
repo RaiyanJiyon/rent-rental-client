@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const CarCard = ({ car }) => {
     return (
@@ -30,13 +31,13 @@ const CarCard = ({ car }) => {
                     {car.location}
                 </p>
             </div>
-            <div className="px-4 pb-4 w-full">
+            <Link to={`/cars/${car._id}`} className="px-4 pb-4 w-full">
                 <button
                     className="w-full px-6 py-1 font-semibold bg-gradient-to-r from-[#FF3600] to-[#ff3700d7] text-white hover:bg-gradient-to-l  duration-300 border-none rounded-lg hover:scale-105 transition-transform text-sm"
                 >
                     Rent Now
                 </button>
-            </div>
+            </Link>
         </div>
     );
 };
