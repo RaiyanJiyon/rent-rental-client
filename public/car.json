@@ -103,5 +103,110 @@
             "photo": "https://neodrive-be91c.web.app/assets/team2-BTMvrJwq.jpg"
         },
         "bookingStatus": "Pending"
+    },
+    {
+        "carModel": "BMW X5",
+        "dailyRentalPrice": 140,
+        "availabilityDate": "2025-01-15",
+        "vehicleRegistrationNumber": "BERLIN-D-12-2345",
+        "features": [
+            "GPS",
+            "Luxury Interior",
+            "All-Wheel Drive"
+        ],
+        "description": "A premium SUV with exceptional performance and comfort.",
+        "bookingCount": 0,
+        "imageUrl": "https://i.ibb.co.com/x5-BMW.jpg",
+        "location": "Berlin, Germany",
+        "saveUserDetails": {
+            "name": "Liam Brown",
+            "email": "liambrown@example.com",
+            "photo": "https://neodrive-be91c.web.app/assets/team5-BMW.jpg"
+        },
+        "bookingStatus": "Pending"
+    },
+    {
+        "carModel": "Audi A4",
+        "dailyRentalPrice": 95,
+        "availabilityDate": "2025-02-01",
+        "vehicleRegistrationNumber": "PARIS-D-13-6789",
+        "features": [
+            "GPS",
+            "Leather Seats",
+            "Turbo Engine"
+        ],
+        "description": "A sleek and stylish sedan with advanced features.",
+        "bookingCount": 0,
+        "imageUrl": "https://i.ibb.co.com/audi-a4.jpg",
+        "location": "Paris, France",
+        "saveUserDetails": {
+            "name": "Noah Miller",
+            "email": "noahmiller@example.com",
+            "photo": "https://neodrive-be91c.web.app/assets/team6-Audi.jpg"
+        },
+        "bookingStatus": "Pending"
+    },
+    {
+        "carModel": "Jeep Wrangler",
+        "dailyRentalPrice": 110,
+        "availabilityDate": "2025-02-20",
+        "vehicleRegistrationNumber": "SYDNEY-D-14-1234",
+        "features": [
+            "GPS",
+            "Off-Road Capability",
+            "Removable Top"
+        ],
+        "description": "An adventurous SUV built for rugged terrain.",
+        "bookingCount": 0,
+        "imageUrl": "https://i.ibb.co.com/jeep-wrangler.jpg",
+        "location": "Sydney, Australia",
+        "saveUserDetails": {
+            "name": "Olivia Taylor",
+            "email": "oliviataylor@example.com",
+            "photo": "https://neodrive-be91c.web.app/assets/team7-Jeep.jpg"
+        },
+        "bookingStatus": "Pending"
+    },
+    {
+        "carModel": "Mercedes-Benz C-Class",
+        "dailyRentalPrice": 130,
+        "availabilityDate": "2025-03-01",
+        "vehicleRegistrationNumber": "TOKYO-D-15-5678",
+        "features": [
+            "GPS",
+            "Luxury Design",
+            "Advanced Safety Features"
+        ],
+        "description": "A sophisticated luxury sedan with impeccable design.",
+        "bookingCount": 0,
+        "imageUrl": "https://i.ibb.co.com/mercedes-c-class.jpg",
+        "location": "Tokyo, Japan",
+        "saveUserDetails": {
+            "name": "Ethan Davis",
+            "email": "ethandavis@example.com",
+            "photo": "https://neodrive-be91c.web.app/assets/team8-Mercedes.jpg"
+        },
+        "bookingStatus": "Pending"
+    },
+    {
+        "carModel": "Range Rover Evoque",
+        "dailyRentalPrice": 125,
+        "availabilityDate": "2025-03-10",
+        "vehicleRegistrationNumber": "LONDON-D-16-9101",
+        "features": [
+            "GPS",
+            "Panoramic Roof",
+            "Terrain Response System"
+        ],
+        "description": "A luxury SUV designed for both city and off-road adventures.",
+        "bookingCount": 0,
+        "imageUrl": "https://i.ibb.co.com/range-rover-evoque.jpg",
+        "location": "London, UK",
+        "saveUserDetails": {
+            "name": "Ava Martinez",
+            "email": "avamartinez@example.com",
+            "photo": "https://neodrive-be91c.web.app/assets/team9-Range.jpg"
+        },
+        "bookingStatus": "Pending"
     }
 ]

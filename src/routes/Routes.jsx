@@ -7,7 +7,6 @@ import CarDetails from "../pages/CarDetails";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./PrivateRoute";
-import DashboardLayout from "../layouts/DashboardLayout";
 import AddCar from "../pages/AddCar";
 import MyCars from "../pages/MyCars";
 import MyBookings from "../pages/MyBookings";
@@ -45,23 +44,29 @@ const router = createBrowserRouter([
                 element: <ResetPassword />
             },
             {
-                path: "dashboard",
-                element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
-                children: [
-                    {
-                        path: "add-car",
-                        element: <AddCar />
-                    },
-                    {
-                        path: "my-cars",
-                        element: <MyCars />
-                    },
-                    {
-                        path: "my-bookings",
-                        element: <MyBookings />
-                    }
-                ]
-            }
+                path: "add-car",
+                element: (
+                    <PrivateRoute>
+                        <AddCar />
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: "my-cars",
+                element: (
+                    <PrivateRoute>
+                        <MyCars />
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: "my-bookings",
+                element: (
+                    <PrivateRoute>
+                        <MyBookings />
+                    </PrivateRoute>
+                )
+            },
         ]
     }
 ]);

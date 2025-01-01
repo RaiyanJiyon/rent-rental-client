@@ -87,7 +87,7 @@ const Navbar = () => {
                             <>
                                 <li>
                                     <NavLink
-                                        to="/dashboard/add-car"
+                                        to="/add-car"
                                         className={({ isActive }) =>
                                             isActive
                                                 ? "block py-2 px-3 text-white bg-red-600 rounded md:bg-transparent md:text-[#FF3500] md:p-0"
@@ -99,7 +99,7 @@ const Navbar = () => {
                                 </li>
                                 <li>
                                     <NavLink
-                                        to="/dashboard/my-cars"
+                                        to="/my-cars"
                                         className={({ isActive }) =>
                                             isActive
                                                 ? "block py-2 px-3 text-white bg-red-600 rounded md:bg-transparent md:text-[#FF3500] md:p-0"
@@ -111,7 +111,7 @@ const Navbar = () => {
                                 </li>
                                 <li>
                                     <NavLink
-                                        to="/dashboard/my-bookings"
+                                        to="/my-bookings"
                                         className={({ isActive }) =>
                                             isActive
                                                 ? "block py-2 px-3 text-white bg-red-600 rounded md:bg-transparent md:text-[#FF3500] md:p-0"
