@@ -4,6 +4,7 @@ import ExperiencedDrivers from "../components/home/ExtraSections/ExperiencedDriv
 import LuxuryRides from "../components/home/ExtraSections/LuxuryRides";
 import WhyChooseUs from "../components/home/WhyChooseUs";
 import { useEffect } from "react";
+import RecentListings from "../components/home/RecentListings";
 
 const Home = () => {
     useEffect(() => {
@@ -20,6 +21,9 @@ const Home = () => {
             </div>
             <div>
                 <WhyChooseUs />
+            </div>
+            <div>
+                <RecentListings />
             </div>
             <div>
                 <LuxuryRides />

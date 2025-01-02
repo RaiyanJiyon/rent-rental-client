@@ -1,6 +1,6 @@
 const ExperiencedDrivers = () => {
     return (
-        <div className="bg-black text-white py-20 px-4 text-center">
+        <div className="bg-[#191919] text-white py-20 px-4 text-center">
             <p className="text-[#FF3600] font-medium mb-2">★ Our Experienced Drivers</p>
             <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-16">
                 Ensuring your safety and comfort <br /> on every journey

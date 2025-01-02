@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const LuxuryRides = () => {
     return (
-        <div className="bg-black px-6 py-20 border border-red-500">
+        <div className="bg-black px-6 py-20">
             <h2 className="text-3xl font-bold text-[#FF3600] text-center mb-5">Luxury Rides at Affordable Prices!</h2>
             <p className="text-center font-semibold text-gray-300 mb-12">
                 Why wait? Take advantage of our incredible offers today!

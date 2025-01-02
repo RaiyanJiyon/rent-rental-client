@@ -12,7 +12,7 @@ const AvailableCars = () => {
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/cars')
+        axios.get('http://localhost:3000/cars')
         .then(response => {
             setCars(response.data);
         })
