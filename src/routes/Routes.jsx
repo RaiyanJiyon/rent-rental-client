@@ -58,7 +58,7 @@ const router = createBrowserRouter([
                     <PrivateRoute>
                         <MyCars />
                     </PrivateRoute>
-                )
+                ),
             },
             {
                 path: "my-bookings",
