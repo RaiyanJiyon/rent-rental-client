@@ -1,20 +1,73 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { authContext } from "../contexts/AuthProvider";
 import axios from "axios";
+import Modal from "../components/common/Modal";
+import Swal from "sweetalert2";
 
 const MyCars = () => {
     const { user } = useContext(authContext);
     const [addedCars, setAddedCars] = useState([]);
+    const [open, setOpen] = useState(false);
+    const [selectedCar, setSelectedCar] = useState(null);
+    const myRef = useRef(null);
 
     useEffect(() => {
         axios.get(`http://localhost:3000/my-cars/${user.email}`)
-        .then(response => {
-            setAddedCars(response.data);
-        })        
-        .catch(error => {
-            console.error(error);
-        });
+            .then(response => {
+                setAddedCars(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     }, [user.email]);
+
+    const handleUpdateCar = car => {
+        setSelectedCar(car);
+        setOpen(true);
+    };
+
+    const handleSaveChanges = (id) => {
+        if (selectedCar) {
+            axios.put(`http://localhost:3000/cars/${selectedCar._id}`, selectedCar)
+                .then(response => {
+                    setOpen(false);
+                    // Optionally refresh the car list here
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    };
+
+    const handleDeleteCar = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:3000/cars/${id}`)
+                    .then(response => {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+    
+                        // Remove the deleted car from the state
+                        setAddedCars(prevCars => prevCars.filter(car => car._id !== id));
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+        });
+    };
+    
 
     return (
         <div className="bg-[#191919] border border-transparent py-20">
@@ -26,7 +79,6 @@ const MyCars = () => {
                             <th className="px-4 py-4 text-white text-center text-xl">Car Model</th>
                             <th className="px-4 py-4 text-white text-center text-xl">Daily Rental Price</th>
                             <th className="px-4 py-4 text-white text-center text-xl">Booking Count</th>
-                            <th className="px-4 py-4 text-white text-center text-xl">Availability</th>
                             <th className="px-4 py-4 text-white text-center text-xl">Date Added</th>
                             <th className="px-4 py-4 text-white text-center text-xl">Actions</th>
                         </tr>
@@ -41,10 +93,9 @@ const MyCars = () => {
                                     <td className="px-4 py-2 text-gray-300 text-center font-semibold">{car.carModel}</td>
                                     <td className="px-4 py-2 text-gray-300 text-center font-semibold">${car.dailyRentalPrice}</td>
                                     <td className="px-4 py-2 text-gray-300 text-center font-semibold">{car.bookingCount}</td>
-                                    <td className="px-4 py-2 text-gray-300 text-center font-semibold">{car.availability}</td>
-                                    <td className="px-4 py-2 text-gray-300 text-center font-semibold">{car.dateAdded}</td>
+                                    <td className="px-4 py-2 text-gray-300 text-center font-semibold">{car.availabilityDate}</td>
                                     <td className="px-4 py-2 text-center">
-                                        <button className="flex items-center font-semibold text-blue-400 hover:text-blue-600 mx-auto">
+                                        <button onClick={() => handleUpdateCar(car)} className="flex items-center font-semibold text-blue-400 hover:text-blue-600 mx-auto">
                                             <span className="mr-2">
                                                 <i className="text-lg">
                                                     <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +105,7 @@ const MyCars = () => {
                                             </span>
                                             Update
                                         </button>
-                                        <button className="flex items-center font-semibold text-red-400 hover:text-red-600 mt-2 mx-auto">
+                                        <button onClick={() => handleDeleteCar(car._id)} className="flex items-center font-semibold text-red-400 hover:text-red-600 mt-2 mx-auto">
                                             <span className="mr-2">
                                                 <i className="text-lg">
                                                     <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -71,6 +122,13 @@ const MyCars = () => {
                     </tbody>
                 </table>
             </div>
+            <Modal
+                open={open}
+                onClose={() => setOpen(false)}
+                car={selectedCar}
+                handleSaveChanges={handleSaveChanges}
+                myRef={myRef}
+            />
         </div>
     );
 };
