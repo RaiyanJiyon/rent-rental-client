@@ -3,7 +3,6 @@ import Hero from "../components/availableCars/Hero";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
 import CarCard from "../components/common/CarCard";
-import { Select, Option } from "@material-tailwind/react";
 import SearchBar from "../components/cars/SearchBar";
 
 const AvailableCars = () => {
@@ -12,6 +11,7 @@ const AvailableCars = () => {
     }, []);
 
     const [cars, setCars] = useState([]);
+    const [sortOption, setSortOption] = useState("default");
 
     useEffect(() => {
         axios.get('http://localhost:3000/cars')
@@ -23,7 +23,24 @@ const AvailableCars = () => {
             })
     }, []);
 
-    console.log(cars)
+    const handleSortChange = (e) => {
+        setSortOption(e.target.value);
+    };
+
+    const sortedCars = [...cars].sort((a, b) => {
+        switch (sortOption) {
+            case "priceLowToHigh":
+                return a.dailyRentalPrice - b.dailyRentalPrice;
+            case "priceHighToLow":
+                return b.dailyRentalPrice - a.dailyRentalPrice;
+            case "dateNewest":
+                return new Date(b.availabilityDate) - new Date(a.availabilityDate);
+            case "dateOldest":
+                return new Date(a.availabilityDate) - new Date(b.availabilityDate);
+            default:
+                return 0;
+        }
+    });
 
     return (
         <div className="bg-[#191919]">
@@ -34,7 +51,11 @@ const AvailableCars = () => {
                 <Hero />
             </div>
             <div className="flex justify-between items-center space-x-4 w-11/12 mx-auto my-10">
-                <select className="px-4 py-2 rounded-lg w-full md:w-auto bg-gray-950 text-white font-semibold border border-slate-200">
+                <select 
+                    className="px-4 py-2 rounded-lg w-full md:w-auto bg-gray-950 text-white font-semibold border border-slate-200"
+                    value={sortOption}
+                    onChange={handleSortChange}
+                >
                     <option value="default">Sort By</option>
                     <option value="priceLowToHigh">Price: Low to High</option>
                     <option value="priceHighToLow">Price: High to Low</option>
@@ -51,16 +72,13 @@ const AvailableCars = () => {
                 </div>
             </div>
 
-
-
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-11/12 mx-auto">
                 {
-                    cars.map((car, _id) => (
+                    sortedCars.map((car, _id) => (
                         <CarCard key={_id} car={car} />
                     ))
                 }
             </div>
-
         </div>
     );
 };
