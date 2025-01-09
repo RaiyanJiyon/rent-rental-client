@@ -1,13 +1,15 @@
-const SearchBar = () => {
+const SearchBar = ({ searchTerm, onSearchChange }) => {
     return (
-        <div className="flex-grow max-w-sm min-w-[200px]">
+        <div className="w-full max-w-sm min-w-[200px]">
             <div className="relative">
                 <input
-                    className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-3 pr-28 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                    className="w-full bg-transparent placeholder:text-slate-400 text-white text-sm border border-slate-200 rounded-md pl-3 pr-28 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                     placeholder="Search by model or location"
+                    value={searchTerm}
+                    onChange={onSearchChange}
                 />
                 <button
-                    className="absolute top-1 right-1 flex items-center rounded bg-[#FF3600] py-1 px-2.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow focus:bg-[#FF3600] focus:shadow-none active:bg-[#FF3600] hover:bg-[#FF3600] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none font-bold"
+                    className="absolute top-1 right-1 flex items-center rounded bg-[#FF3600] py-1 px-2.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-gradient-to-r from-[#FF3600] to-[#ff3700d7] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none font-bold"
                     type="button"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 mr-2">
