@@ -13,6 +13,7 @@ const AvailableCars = () => {
     const [cars, setCars] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [sortOption, setSortOption] = useState("default");
+    const [view, setView] = useState("grid"); // New state to manage view
 
     useEffect(() => {
         axios.get('http://localhost:3000/cars')
@@ -74,17 +75,20 @@ const AvailableCars = () => {
                 </select>
                 <SearchBar searchTerm={searchTerm} onSearchChange={handleSearch} />
                 <div className="flex-shrink-0">
-                    <button className="btn btn-sm mr-2 bg-gradient-to-r from-[#FF3600] to-[#ff3700d7] text-white font-bold hover:bg-gradient-to-l transition-all duration-300 border-none">
+                    <button 
+                        className="btn btn-sm mr-2 bg-gradient-to-r from-[#FF3600] to-[#ff3700d7] text-white font-bold hover:bg-gradient-to-l transition-all duration-300 border-none"
+                        onClick={() => setView(view === "grid" ? "list" : "grid")}
+                    >
                         <svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" className="" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M80 368H16a16 16 0 0 0-16 16v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-64a16 16 0 0 0-16-16zm0-320H16A16 16 0 0 0 0 64v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16V64a16 16 0 0 0-16-16zm0 160H16a16 16 0 0 0-16 16v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-64a16 16 0 0 0-16-16zm416 176H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z"></path></svg>
-                        List View
+                        {view === "grid" ? "List View" : "Grid View"}
                     </button>
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-11/12 mx-auto">
+            <div className={`w-11/12 mx-auto ${view === "grid" ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" : "flex flex-col space-y-4"}`}>
                 {
-                    sortedCars.map((car, _id) => (
-                        <CarCard key={_id} car={car} />
+                    sortedCars.map((car) => (
+                        <CarCard key={car._id} car={car} />
                     ))
                 }
             </div>

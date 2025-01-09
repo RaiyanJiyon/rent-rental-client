@@ -6,7 +6,7 @@ const CarCard = ({ car }) => {
         <div className="relative flex flex-col my-6 bg-black text-white shadow-sm border border-slate-200 rounded-lg">
             <div className="relative h-44 m-2.5 overflow-hidden text-white rounded-md">
                 <img
-                    className='w-full h-full transition-transform duration-500 ease-in-out transform hover:scale-110'
+                    className='w-full h-full transition-transform duration-500 ease-in-out transform hover:scale-110 object-fill'
                     src={`${car.imageUrl}`}
                     alt="card-image"
                 />
