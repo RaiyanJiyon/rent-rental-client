@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import BookingModal from "../components/common/BookingModal";
 
 const CarDetails = () => {
     useEffect(() => {
@@ -7,6 +8,15 @@ const CarDetails = () => {
     }, []);
 
     const carInformation = useLoaderData();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleBookingCar = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <div className="bg-[#191919] py-10">
@@ -36,20 +46,18 @@ const CarDetails = () => {
                             <strong className="text-gray-300">Features:</strong>
                         </p>
                         <ul className="list-disc ml-8 text-gray-300">
-                            {
-                                carInformation.features.map((carDetails, idx) => (
-                                    <li key={idx}>{carDetails}</li>
-                                ))
-                            }
+                            {carInformation.features.map((carDetails, idx) => (
+                                <li key={idx}>{carDetails}</li>
+                            ))}
                         </ul>
                     </div>
-                    <button className="mt-8 px-6 py-3 bg-gradient-to-r from-[#FF3600] to-[#ff3700d7] text-white hover:bg-gradient-to-l font-semibold rounded-lg text-lg">Book Now</button>
+                    <button onClick={handleBookingCar} className="mt-8 px-6 py-3 bg-gradient-to-r from-[#FF3600] to-[#ff3700d7] text-white hover:bg-gradient-to-l font-semibold rounded-lg text-lg">Book Now</button>
                 </div>
                 <div className="md:w-1/2 bg-gray-200 flex items-center">
                     <img className="w-full h-full object-fill" src={`${carInformation.imageUrl}`} alt="Mercedes G Class" />
                 </div>
             </div>
-
+            {isModalOpen && <BookingModal carInformation={carInformation} onClose={handleCloseModal} />}
         </div>
     );
 };
