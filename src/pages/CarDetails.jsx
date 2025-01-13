@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import BookingModal from "../components/common/BookingModal";
+import BookingModal from "../components/bookings/BookingModal";
 
 const CarDetails = () => {
     useEffect(() => {
