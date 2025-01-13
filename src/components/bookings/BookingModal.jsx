@@ -5,21 +5,26 @@ import ErrorToaster from "../common/ErrorToaster";
 const BookingModal = ({ carInformation, onClose }) => {
 
     const handleConfirmBooking = () => {
-        axios.post('http://localhost:3000/booking-cars', carInformation)
+        // Get the current date
+        const currentDate = new Date().toISOString();
+
+        // Include the current date in the carInformation object
+        const bookingData = { ...carInformation, bookingDate: currentDate };
+
+        axios.post('http://localhost:3000/booking-cars', bookingData)
             .then(response => {
                 SuccessToaster('Booking confirmed:', response.data);
                 // Close the modal after successful booking
                 onClose();
             })
             .catch(error => {
-                ErrorToaster('Already booking confirmed:', error);
+                ErrorToaster('Error booking car:', error);
             });
     };
 
     return (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
             <div className="bg-gray-300 p-6 rounded-lg shadow-lg max-w-sm w-full relative">
-                <button onClick={onClose} className="absolute top-2 right-2 text-gray-600 hover:text-gray-800">&times;</button>
                 <h2 className="text-2xl font-bold mb-4">Confirm Booking</h2>
                 <p className="mb-2 font-semibold text-gray-800">Car Model: {carInformation.carModel}</p>
                 <p className="mb-2 font-semibold text-gray-800">Price per Day: {carInformation.dailyRentalPrice}$</p>
