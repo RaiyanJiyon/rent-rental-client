@@ -24,7 +24,7 @@ const FAQ = () => {
     ];
 
     return (
-        <section className="bg-[#1E2325] py-16 px-6 md:px-12">
+        <section className="bg-[#191919] py-16 px-6 md:px-12">
             <div className="flex flex-col lg:flex-row-reverse items-center gap-12 w-11/12 mx-auto">
                 {/* Text and FAQ Section */}
                 <div className="text-white lg:w-1/2">

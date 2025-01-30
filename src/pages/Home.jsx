@@ -2,11 +2,11 @@ import { Helmet } from "react-helmet-async";
 import Banner from "../components/home/Banner";
 import ExperiencedDrivers from "../components/home/ExtraSections/ExperiencedDrivers";
 import LuxuryRides from "../components/home/ExtraSections/LuxuryRides";
-import WhyChooseUs from "../components/home/WhyChooseUs";
 import { useEffect } from "react";
 import RecentListings from "../components/home/RecentListings";
 import Testimonials from "../components/home/Testimonials";
 import FAQ from "../components/home/FAQ";
+import RentalService from "../components/home/RentalService";
 
 const Home = () => {
     useEffect(() => {
@@ -22,7 +22,7 @@ const Home = () => {
                 <Banner />
             </div>
             <div>
-                <WhyChooseUs />
+                <RentalService />
             </div>
             <div>
                 <RecentListings />
@@ -34,10 +34,10 @@ const Home = () => {
                 <ExperiencedDrivers />
             </div>
             <div>
-                <FAQ />
+                <Testimonials />
             </div>
             <div>
-                <Testimonials />
+                <FAQ />
             </div>
         </div>
     );

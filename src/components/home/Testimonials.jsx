@@ -7,6 +7,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import SectionTitle from "../common/SectionTitle";
 
 const Testimonials = () => {
     const [reviews, setReviews] = useState([]);
@@ -25,18 +26,8 @@ const Testimonials = () => {
     }, []);
 
     return (
-        <div className="bg-[#191919] pb-16 relative">
-            <div className="w-11/12 md:w-1/2 mx-auto pt-20">
-                <h4 className="flex justify-center items-center gap-1 font-bold text-[#FF3600] text-center mb-5">
-                    <FaAsterisk className="text-xs" />
-                    Testimonials
-                </h4>
-                <h2 className="text-white text-4xl text-center font-bold mb-12">
-                    What our customers are <br /> saying <br />
-                    about us
-                </h2>
-            </div>
-
+        <div className="pb-16 relative">
+            <SectionTitle title="Testimonials" description="What our customers are saying about us" />
             <div className="w-4/5 mx-auto my-10 relative">
                 {/* Swiper Component */}
                 <Swiper
@@ -76,7 +67,7 @@ const Testimonials = () => {
                 >
                     {reviews.map((review, idx) => (
                         <SwiperSlide key={idx}>
-                            <div className="block max-w-sm p-6 bg-[#1E2325] rounded-lg shadow-sm mb-4">
+                            <div className="block max-w-sm p-6 bg-[#191919] rounded-lg shadow-sm mb-4">
                                 <div className="flex items-center mb-2">
                                     {[...Array(review.rating)].map((_, starIdx) => (
                                         <span key={starIdx} className="text-2xl text-[#ff3600]">★</span>
