@@ -1,40 +1,47 @@
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { FaMapMarkerAlt, FaCalendarAlt, FaCar } from "react-icons/fa";
 
 const CarCard = ({ car }) => {
     return (
-        <div className="relative flex flex-col my-6 bg-black text-white shadow-sm border border-slate-200 rounded-lg">
-            <div className="relative h-44 m-2.5 overflow-hidden text-white rounded-md">
+        <div className="relative flex flex-col my-6 bg-black text-white shadow-md border border-gray-700 rounded-lg overflow-hidden">
+            {/* Car Image with Price Tag */}
+            <div className="relative h-52 overflow-hidden">
                 <img
-                    className='w-full h-full transition-transform duration-500 ease-in-out transform hover:scale-110 object-fill'
-                    src={`${car.imageUrl}`}
-                    alt="card-image"
+                    className="w-full h-full object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
+                    src={car.imageUrl}
+                    alt={car.carModel}
                 />
-                <div className="absolute top-0 left-0 bg-[#FF3600] text-white font-bold text-sm p-2 rounded-br-lg">
+                <div className="absolute top-2 left-2 bg-[#FF3600] text-white font-bold text-sm px-3 py-1 rounded-lg shadow-md">
                     ${car.dailyRentalPrice}/Day
                 </div>
             </div>
-            <div className="p-4">
-                <h6 className="mb-2 text-red-600 text-xl font-semibold">
+
+            {/* Car Details */}
+            <div className="p-5 flex flex-col gap-3">
+                <h3 className="text-xl font-semibold text-red-500">
                     {car.carModel}
-                </h6>
-                <p className="leading-normal font-light text-sm">
-                    <span className='font-bold'>Availability: </span>
-                    {car.availabilityDate}
-                </p>
-                <p className="leading-normal font-light text-sm">
-                    <span className='font-bold'>Booking Count: </span>
-                    {car.bookingCount}
-                </p>
-                <p className="leading-normal font-light text-sm">
-                    <span className='font-bold'>Location: </span>
-                    {car.location}
-                </p>
+                </h3>
+
+                <div className="flex items-center gap-2 text-sm text-gray-300">
+                    <FaCalendarAlt className="text-red-500" />
+                    <span>Available {car.availabilityDate}</span>
+                </div>
+
+                <div className="flex items-center gap-2 text-sm text-gray-300">
+                    <FaMapMarkerAlt className="text-red-500" />
+                    <span>{car.location}</span>
+                </div>
+
+                <div className="flex items-center gap-2 text-sm text-gray-300">
+                    <FaCar className="text-red-500" />
+                    <span>{car.bookingCount} bookings</span>
+                </div>
             </div>
-            <Link to={`/cars/${car._id}`} className="px-4 pb-4 w-full">
-                <button
-                    className="w-full px-6 py-1 font-semibold bg-gradient-to-r from-[#FF3600] to-[#ff3700d7] text-white hover:bg-gradient-to-l  duration-300 border-none rounded-lg hover:scale-105 transition-transform text-sm"
-                >
+
+            {/* Rent Now Button */}
+            <Link to={`/cars/${car._id}`} className="px-5 pb-5">
+                <button className="w-full py-2 font-semibold bg-gradient-to-r from-[#FF3600] to-[#ff3700d7] text-white hover:bg-gradient-to-l transition-all duration-300 border-none rounded-lg hover:scale-105">
                     Rent Now
                 </button>
             </Link>
