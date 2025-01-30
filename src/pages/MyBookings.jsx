@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import Swal from "sweetalert2";
 import ModifyBookingDateModal from "../components/bookings/ModifyBookingDate";
 
-
 const MyBookings = () => {
     const [bookingCars, setBookingCars] = useState([]);
     const [loading, setLoading] = useState(true);

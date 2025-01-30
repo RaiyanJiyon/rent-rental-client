@@ -6,9 +6,9 @@ const Footer = () => {
             <div className='flex flex-col md:flex-row justify-evenly gap-6 w-11/12 mx-auto'>
                 <div className='space-y-3'>
                     <div className='flex items-center gap-1'>
-                        <h2 className='text-2xl font-bold text-white'><span className='text-red-600'>NEO</span>DRIVE</h2>
+                        <h2 className='text-2xl font-bold text-white'><span className='text-red-600'>Rent</span>Ride</h2>
                     </div>
-                    <p className='text-sm'>Experience the ease and convenience of renting a car with NeoDrive..</p>
+                    <p className='text-sm'>Experience the ease and convenience of renting a car with Rent Ride..</p>
                 </div>
                 <div className='space-y-3'>
                     <h4 className='text-white font-medium'>Stay Updated</h4>
