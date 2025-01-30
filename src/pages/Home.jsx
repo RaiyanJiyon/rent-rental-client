@@ -6,6 +6,7 @@ import WhyChooseUs from "../components/home/WhyChooseUs";
 import { useEffect } from "react";
 import RecentListings from "../components/home/RecentListings";
 import Testimonials from "../components/home/Testimonials";
+import FAQ from "../components/home/FAQ";
 
 const Home = () => {
     useEffect(() => {
@@ -31,6 +32,9 @@ const Home = () => {
             </div>
             <div>
                 <ExperiencedDrivers />
+            </div>
+            <div>
+                <FAQ />
             </div>
             <div>
                 <Testimonials />
