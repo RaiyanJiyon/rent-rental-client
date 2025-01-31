@@ -1,15 +1,19 @@
 import axios from "axios";
 import SuccessToaster from "../common/SuccessToaster";
 import ErrorToaster from "../common/ErrorToaster";
+import { useContext } from "react";
+import { authContext } from "../../contexts/AuthProvider";
 
 const BookingModal = ({ carInformation, onClose }) => {
+    const { user } = useContext(authContext);
 
     const handleConfirmBooking = () => {
         // Get the current date
         const currentDate = new Date().toISOString();
 
         // Include the current date in the carInformation object
-        const bookingData = { ...carInformation, bookingDate: currentDate };
+        const bookingData = { ...carInformation, bookingDate: currentDate, booked_user: user.email };
+        console.log(bookingData)
 
         axios.post('http://localhost:3000/booking-cars', bookingData)
             .then(response => {
@@ -18,7 +22,8 @@ const BookingModal = ({ carInformation, onClose }) => {
                 onClose();
             })
             .catch(error => {
-                ErrorToaster('Error booking car:', error);
+                console.error(error.message);
+                ErrorToaster('You had already booked this car:');
             });
     };
 

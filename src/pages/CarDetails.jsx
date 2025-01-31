@@ -1,16 +1,34 @@
-import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Navigate, useLoaderData, useNavigate } from "react-router-dom";
 import BookingModal from "../components/bookings/BookingModal";
+import { authContext } from "../contexts/AuthProvider";
+import Swal from "sweetalert2";
 
 const CarDetails = () => {
     useEffect(() => {
         scrollTo(0, 0);
     }, []);
 
+    const { user } = useContext(authContext); // Destructure user from AuthContext
+    const navigate = useNavigate();
     const carInformation = useLoaderData();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleBookingCar = () => {
+        if (!user) {
+            Swal.fire({
+                title: "Not logged in!",
+                text: "You must be logged in to book a car. Please login or create an account.",
+                icon: "warning",
+                confirmButtonText: "Login",
+                showCancelButton: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate("/login");
+                }
+            });
+            return;
+        }
         setIsModalOpen(true);
     };
 

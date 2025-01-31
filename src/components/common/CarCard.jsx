@@ -4,7 +4,7 @@ import { FaMapMarkerAlt, FaCalendarAlt, FaCar } from "react-icons/fa";
 
 const CarCard = ({ car }) => {
     return (
-        <div className="relative flex flex-col my-6 bg-black text-white shadow-md border border-gray-700 rounded-lg overflow-hidden">
+        <div data-aos="zoom-in-up" className="relative flex flex-col my-6 bg-black text-white shadow-md border border-gray-700 rounded-lg overflow-hidden">
             {/* Car Image with Price Tag */}
             <div className="relative h-52 overflow-hidden">
                 <img

@@ -67,7 +67,7 @@ const Testimonials = () => {
                 >
                     {reviews.map((review, idx) => (
                         <SwiperSlide key={idx}>
-                            <div className="block max-w-sm p-6 bg-[#191919] rounded-lg shadow-sm mb-4">
+                            <div data-aos="zoom-in-up" className="block max-w-sm p-6 bg-[#191919] rounded-lg shadow-sm mb-4 transition-transform duration-500 ease-in-out transform hover:scale-110">
                                 <div className="flex items-center mb-2">
                                     {[...Array(review.rating)].map((_, starIdx) => (
                                         <span key={starIdx} className="text-2xl text-[#ff3600]">★</span>

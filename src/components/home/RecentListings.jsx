@@ -23,7 +23,7 @@ const RecentListings = () => {
             <SectionTitle title="Discover the Latest Arrivals" description="Explore our newest rides and book your dream car today!" />
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-4/5 mx-auto">
                 {recentCars.map((recentCar) => (
-                    <div key={recentCar._id} className="relative flex flex-col my-6 bg-black text-white shadow-md border border-gray-700 rounded-lg overflow-hidden">
+                    <div data-aos="zoom-in-up" key={recentCar._id} className="relative flex flex-col my-6 bg-black text-white shadow-md border border-gray-700 rounded-lg overflow-hidden">
                         {/* Car Image with Price Tag */}
                         <div className="relative h-52 overflow-hidden">
                             <img

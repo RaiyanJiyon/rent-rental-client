@@ -1,79 +1,42 @@
-import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { format } from "date-fns";
-import { useState, useEffect, useRef } from "react";
-import Swal from "sweetalert2";
-import ModifyBookingDateModal from "../components/bookings/ModifyBookingDate";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import { authContext } from "../contexts/AuthProvider";
+import ErrorToaster from "../components/common/ErrorToaster";
+import SuccessToaster from "../components/common/SuccessToaster";
+import LoadingSpinner from "../components/common/LoadingSpinner";
 
 const MyBookings = () => {
     const [bookingCars, setBookingCars] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedBookingId, setSelectedBookingId] = useState(null);
-    const myRef = useRef(null);
-
-    const fetchCars = () => {
-        axios
-            .get("http://localhost:3000/booking-cars")
-            .then((response) => {
-                setBookingCars(response.data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error(error);
-                setLoading(false);
-                Swal.fire({
-                    icon: "error",
-                    title: "Failed to fetch booking cars",
-                    text: "Please try again later",
-                });
-            });
-    };
-
-    const handleModifyDate = (id) => {
-        setSelectedBookingId(id);
-        setIsModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-        setSelectedBookingId(null);
-    };
-
-    const handleSubmitDate = (newDate) => {
-        axios
-            .put(`http://localhost:3000/booking-cars/${selectedBookingId}`, { bookingDate: newDate })
-            .then(() => {
-                Swal.fire({
-                    icon: "success",
-                    title: "Booking date updated successfully",
-                });
-                fetchCars();
-                handleCloseModal();
-            })
-            .catch((error) => {
-                console.error(error);
-                Swal.fire({
-                    icon: "error",
-                    title: "Failed to update booking date",
-                    text: "Please try again later",
-                });
-            });
-    };
+    const axiosPublic = useAxiosPublic();
+    const { user } = useContext(authContext);
 
     useEffect(() => {
-        fetchCars();
-    }, []);
+        fetchBookingCars();
+    }, [axiosPublic, user?.email]);
+
+    const fetchBookingCars = async () => {
+        setLoading(true);
+        try {
+            const response = await axiosPublic.get(`/booking-cars/${user?.email}`);
+            setBookingCars(response.data);
+        } catch (error) {
+            console.error(error.message);
+            ErrorToaster("Failed to fetch bookings. Please try again later.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     if (loading) {
-        return (
-            <div className="min-h-screen bg-[#191919] flex items-center justify-center">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-red-500"></div>
-            </div>
-        );
+        return <LoadingSpinner />
     }
 
     return (
-        <div className="bg-[#191919] min-h-screen border border-transparent py-20" ref={myRef}>
+        <div className="bg-[#191919] min-h-screen border border-transparent py-20">
             <h1 className="text-4xl font-bold text-center text-white mb-10">My Bookings</h1>
 
             {bookingCars.length === 0 ? (
@@ -121,12 +84,13 @@ const MyBookings = () => {
                                     </td>
                                     <td className="px-4 py-4 text-center">
                                         <span
-                                            className={`px-3 py-1 rounded-full text-sm font-semibold ${car.bookingStatus === "Booked"
+                                            className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                                                car.bookingStatus === "Booked"
                                                     ? "bg-red-200 text-red-800"
                                                     : car.bookingStatus === "Pending"
-                                                        ? "bg-yellow-200 text-yellow-800"
-                                                        : "bg-green-200 text-green-800"
-                                                }`}
+                                                    ? "bg-yellow-200 text-yellow-800"
+                                                    : "bg-green-200 text-green-800"
+                                            }`}
                                         >
                                             {car.bookingStatus}
                                         </span>
@@ -134,11 +98,14 @@ const MyBookings = () => {
                                     <td className="px-4 py-4 text-center space-x-4">
                                         <button
                                             onClick={() => handleModifyDate(car._id)}
-                                            className="inline-flex font-medium items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                                            className="inline-flex font-medium items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200"
                                         >
                                             Modify Date
                                         </button>
-                                        <button className="inline-flex font-medium items-center px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+                                        <button 
+                                            onClick={() => handleCancelBooking(car._id)}
+                                            className="inline-flex font-medium items-center px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors duration-200"
+                                        >
                                             Cancel
                                         </button>
                                     </td>
@@ -146,12 +113,6 @@ const MyBookings = () => {
                             ))}
                         </tbody>
                     </table>
-                    {isModalOpen && (
-                        <ModifyBookingDateModal
-                            onClose={handleCloseModal}
-                            onSubmit={handleSubmitDate}
-                        />
-                    )}
                 </div>
             )}
         </div>

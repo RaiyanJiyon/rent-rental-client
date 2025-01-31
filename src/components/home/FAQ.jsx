@@ -62,7 +62,7 @@ const FAQ = () => {
                 </div>
 
                 {/* Image Section */}
-                <div className="">
+                <div data-aos="fade-right">
                     {/* Car Image */}
                     <img src="https://demo.awaikenthemes.com/novaride/dark/wp-content/uploads/2024/08/our-faqs-car-img.png"
                         alt="Luxury Car"
