@@ -56,7 +56,7 @@ const AvailableCars = () => {
     return (
         <div className="bg-[#191919]">
             <Helmet>
-                <title>Available Cars | NeoDrive</title>
+                <title>Available Cars | RentRental</title>
             </Helmet>
             <div>
                 <Hero />

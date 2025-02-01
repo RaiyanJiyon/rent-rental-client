@@ -5,6 +5,7 @@ import Modal from "../components/common/Modal";
 import Swal from "sweetalert2";
 import { format } from 'date-fns';
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const MyCars = () => {
     const { user } = useContext(authContext);
@@ -91,6 +92,9 @@ const MyCars = () => {
 
     return (
         <div className="bg-[#191919] min-h-screen border border-transparent py-20" ref={myRef}>
+            <Helmet>
+                <title>My Cars | RentRental</title>
+            </Helmet>
             {/* Modal Component */}
             <Modal
                 open={open}
@@ -163,8 +167,8 @@ const MyCars = () => {
                                     </td>
                                     <td className="px-4 py-4 text-center">
                                         <span className={`px-3 py-1 rounded-full text-sm font-semibold ${car.bookingStatus === "Booked"
-                                                ? "bg-red-200 text-red-800"
-                                                : "bg-green-200 text-green-800"
+                                            ? "bg-red-200 text-red-800"
+                                            : "bg-green-200 text-green-800"
                                             }`}>
                                             {car.bookingStatus || "Available"}
                                         </span>

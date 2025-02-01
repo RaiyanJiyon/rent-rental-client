@@ -122,7 +122,7 @@ const AddCar = () => {
     return (
         <div className="bg-[#191919] pb-20">
             <Helmet>
-                <title>Add Car | NeoDrive</title>
+                <title>Add Car | RentRental</title>
             </Helmet>
 
             <div className="w-11/12 md:w-1/2 mx-auto py-6 md:py-10 space-y-4">

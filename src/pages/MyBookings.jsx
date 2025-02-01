@@ -5,6 +5,7 @@ import { authContext } from "../contexts/AuthProvider";
 import ErrorToaster from "../components/common/ErrorToaster";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import Swal from 'sweetalert2';
+import { Helmet } from "react-helmet-async";
 
 const MyBookings = () => {
     const [bookingCars, setBookingCars] = useState([]);
@@ -46,11 +47,14 @@ const MyBookings = () => {
                 try {
                     const response = await axiosPublic.patch(`/booking-cars/${car._id}`, { bookingStatus: 'Pending' });
                     if (response.data.modifiedCount === 1) {
-                        setBookingCars(bookingCars.map(bookingCar =>
-                            bookingCar._id === car._id
-                                ? { ...bookingCar, bookingStatus: 'Pending' }
-                                : bookingCar
-                        ));
+                        // Update the local state
+                        setBookingCars(prevBookingCars =>
+                            prevBookingCars.map(bookingCar =>
+                                bookingCar._id === car._id
+                                    ? { ...bookingCar, bookingStatus: 'Pending' }
+                                    : bookingCar
+                            )
+                        );
                         Swal.fire({
                             title: "Updated!",
                             text: "Your booking has been canceled.",
@@ -70,8 +74,12 @@ const MyBookings = () => {
     };
 
 
+
     return (
         <div className="bg-[#191919] min-h-screen border border-transparent py-20">
+            <Helmet>
+                <title>My Bookings | RentRental</title>
+            </Helmet>
             <h1 className="text-4xl font-bold text-center text-white mb-10">My Bookings</h1>
             {bookingCars.length === 0 ? (
                 <div className="text-center text-gray-400 text-xl">
