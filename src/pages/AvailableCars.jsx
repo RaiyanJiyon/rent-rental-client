@@ -85,7 +85,7 @@ const AvailableCars = () => {
                 </div>
             </div>
 
-            <div className={`w-11/12 mx-auto ${view === "grid" ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" : "flex flex-col space-y-4"}`}>
+            <div className={`w-11/12 mx-auto pb-20 ${view === "grid" ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" : "flex flex-col space-y-4"}`}>
                 {
                     sortedCars.map((car) => (
                         <CarCard key={car._id} car={car} />
