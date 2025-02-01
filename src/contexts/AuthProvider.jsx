@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
         })
-        return unsubscribe;
+        return () => unsubscribe();
     }, []);
 
 
@@ -51,7 +51,8 @@ const AuthProvider = ({ children }) => {
         createUser,
         signoutUSer,
         signinUser,
-        resetPassword
+        resetPassword,
+        loading
     }
     return (
         <authContext.Provider value={authInfo}>

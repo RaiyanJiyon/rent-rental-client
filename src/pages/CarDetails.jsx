@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Navigate, useLoaderData, useNavigate } from "react-router-dom";
+import {useLoaderData, useNavigate } from "react-router-dom";
 import BookingModal from "../components/bookings/BookingModal";
 import { authContext } from "../contexts/AuthProvider";
 import Swal from "sweetalert2";

@@ -23,7 +23,7 @@ const BookingModal = ({ carInformation, onClose }) => {
             })
             .catch(error => {
                 console.error(error.message);
-                ErrorToaster('You had already booked this car:');
+                ErrorToaster('This car is already booked');
             });
     };
 

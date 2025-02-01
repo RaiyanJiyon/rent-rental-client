@@ -46,9 +46,9 @@ const MyBookings = () => {
                 try {
                     const response = await axiosPublic.patch(`/booking-cars/${car._id}`, { bookingStatus: 'Pending' });
                     if (response.data.modifiedCount === 1) {
-                        setBookingCars(bookingCars.map(bookingCar => 
-                            bookingCar._id === car._id 
-                                ? { ...bookingCar, bookingStatus: 'Pending' } 
+                        setBookingCars(bookingCars.map(bookingCar =>
+                            bookingCar._id === car._id
+                                ? { ...bookingCar, bookingStatus: 'Pending' }
                                 : bookingCar
                         ));
                         Swal.fire({
@@ -129,13 +129,6 @@ const MyBookings = () => {
                                         </span>
                                     </td>
                                     <td className="px-4 py-4 text-center space-x-4">
-                                        <button
-                                            onClick={() => handleModifyDate(car._id)}
-                                            aria-label="Modify booking date"
-                                            className="font-medium items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200"
-                                        >
-                                            Modify Date
-                                        </button>
                                         <button
                                             onClick={() => handleCancel(car)}
 

@@ -13,7 +13,7 @@ const AvailableCars = () => {
     const [cars, setCars] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [sortOption, setSortOption] = useState("default");
-    const [view, setView] = useState("grid"); // New state to manage view
+    const [view, setView] = useState("grid");
 
     useEffect(() => {
         axios.get('http://localhost:3000/cars')
@@ -75,7 +75,7 @@ const AvailableCars = () => {
                 </select>
                 <SearchBar searchTerm={searchTerm} onSearchChange={handleSearch} />
                 <div className="flex-shrink-0">
-                    <button 
+                    <button
                         className="btn btn-sm mr-2 bg-gradient-to-r from-[#FF3600] to-[#ff3700d7] text-white font-bold hover:bg-gradient-to-l transition-all duration-300 border-none"
                         onClick={() => setView(view === "grid" ? "list" : "grid")}
                     >
