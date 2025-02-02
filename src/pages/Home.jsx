@@ -1,12 +1,13 @@
 import { Helmet } from "react-helmet-async";
-import Banner from "../components/home/Banner";
-import ExperiencedDrivers from "../components/home/ExtraSections/ExperiencedDrivers";
-import LuxuryRides from "../components/home/ExtraSections/LuxuryRides";
 import { useEffect } from "react";
+import Banner from "../components/home/Banner";
+import RentalService from "../components/home/RentalService";
 import RecentListings from "../components/home/RecentListings";
+import LuxuryRides from "../components/home/LuxuryRides";
+import ExperiencedDrivers from "../components/home/ExperiencedDrivers";
 import Testimonials from "../components/home/Testimonials";
 import FAQ from "../components/home/FAQ";
-import RentalService from "../components/home/RentalService";
+import HowItWorks from "../components/home/HowItWorks";
 
 const Home = () => {
     useEffect(() => {
@@ -20,6 +21,9 @@ const Home = () => {
             </Helmet>
             <div>
                 <Banner />
+            </div>
+            <div>
+                <HowItWorks />
             </div>
             <div>
                 <RentalService />

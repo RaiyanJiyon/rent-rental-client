@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { FaAsterisk } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -8,6 +7,24 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import SectionTitle from "../common/SectionTitle";
+
+
+const StarRating = ({ rating }) => {
+    const totalStars = 5;
+    const filledStars = Array(rating).fill("★");
+    const emptyStars = Array(totalStars - rating).fill("★");
+
+    return (
+        <div className="flex items-center mb-2">
+            {filledStars.map((star, idx) => (
+                <span key={`filled-${idx}`} className="text-2xl text-[#ff3600]">{star}</span>
+            ))}
+            {emptyStars.map((star, idx) => (
+                <span key={`empty-${idx}`} className="text-2xl text-gray-400">{star}</span>
+            ))}
+        </div>
+    );
+};
 
 const Testimonials = () => {
     const [reviews, setReviews] = useState([]);
@@ -69,12 +86,7 @@ const Testimonials = () => {
                         <SwiperSlide key={idx}>
                             <div data-aos="zoom-in-up" className="block max-w-sm p-6 bg-[#191919] rounded-lg shadow-sm mb-4 transition-transform duration-500 ease-in-out transform hover:scale-110">
                                 <div className="flex items-center mb-2">
-                                    {[...Array(review.rating)].map((_, starIdx) => (
-                                        <span key={starIdx} className="text-2xl text-[#ff3600]">★</span>
-                                    ))}
-                                    {[...Array(5 - review.rating)].map((_, starIdx) => (
-                                        <span key={starIdx} className="text-2xl text-gray-400">★</span>
-                                    ))}
+                                    <StarRating rating={review.rating} />
                                 </div>
                                 <h5 className="mb-2 text-xs text-white h-32">{review.review}</h5>
                                 <div className="border border-b-gray-900 mb-6"></div>

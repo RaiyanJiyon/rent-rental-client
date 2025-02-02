@@ -1,29 +1,30 @@
 import { useEffect, useState } from "react";
 import Hero from "../components/availableCars/Hero";
 import { Helmet } from "react-helmet-async";
-import axios from "axios";
 import CarCard from "../components/common/CarCard";
 import SearchBar from "../components/cars/SearchBar";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const AvailableCars = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+    const axiosPublic = useAxiosPublic();
     const [cars, setCars] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [sortOption, setSortOption] = useState("default");
     const [view, setView] = useState("grid");
 
     useEffect(() => {
-        axios.get('http://localhost:3000/cars')
+        axiosPublic.get('/cars')
             .then(response => {
                 setCars(response.data);
             })
             .catch(error => {
                 console.error(error.message);
             })
-    }, []);
+    }, [axiosPublic]);
 
     const handleSortChange = (e) => {
         setSortOption(e.target.value);
