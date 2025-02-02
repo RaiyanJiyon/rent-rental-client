@@ -1,22 +1,23 @@
-import axios from "axios";
 import { formatDistanceToNow, parseISO } from "date-fns";
 import { useEffect, useState } from "react";
-import { FaAsterisk, FaMapMarkerAlt, FaCalendarAlt, FaCar } from "react-icons/fa";
+import { FaMapMarkerAlt, FaCalendarAlt, FaCar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import SectionTitle from "../common/SectionTitle";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const RecentListings = () => {
     const [recentCars, setRecentCars] = useState([]);
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
-        axios.get("http://localhost:3000/recent-cars")
+        axiosPublic.get("/recent-cars")
             .then(response => {
                 setRecentCars(response.data);
             })
             .catch(error => {
                 console.error(error.message);
             });
-    }, []);
+    }, [axiosPublic]);
 
     return (
         <div className="bg-[#191919] pb-16">

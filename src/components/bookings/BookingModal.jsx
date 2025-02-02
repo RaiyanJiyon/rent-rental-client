@@ -17,7 +17,8 @@ const BookingModal = ({ carInformation, onClose }) => {
 
         axios.post('http://localhost:3000/booking-cars', bookingData)
             .then(response => {
-                SuccessToaster('Booking confirmed:', response.data);
+                console.log(response);
+                SuccessToaster('Booking confirmed.');
                 // Close the modal after successful booking
                 onClose();
             })
