@@ -26,7 +26,7 @@ const HowItWorks = () => {
 
     return (
         <section className="bg-[#191919] py-16 px-6 md:px-12">
-            <div data-aos="fade-up" className="flex flex-col lg:flex-row items-center gap-12 w-11/12 mx-auto">
+            <div data-aos="fade-up" className="flex flex-col lg:flex-row items-center gap-20 w-11/12 mx-auto">
                 {/* Text and FAQ Section */}
                 <div className="text-white lg:w-1/2">
                     <h4 className="flex items-center gap-2 text-[#FF3600] font-semibold text-lg mb-4">

@@ -30,7 +30,7 @@ const router = createBrowserRouter([
             {
                 path: "cars/:id",
                 element: <CarDetails />,
-                loader: ({params}) => fetch(`http://localhost:3000/cars/${params.id}`)
+                loader: ({params}) => fetch(`https://neo-drive-server.vercel.app/cars/${params.id}`)
             },
             {
                 path: "login",

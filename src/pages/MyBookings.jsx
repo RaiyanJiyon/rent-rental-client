@@ -52,7 +52,7 @@ const MyBookings = () => {
                             prevBookingCars.filter((bookingCar) => bookingCar._id !== car._id)
                         );
                         Swal.fire({
-                            title: "Updated!",
+                            title: "Canceled!",
                             text: "Your booking has been canceled.",
                             icon: "success"
                         });
