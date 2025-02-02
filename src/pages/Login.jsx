@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../contexts/AuthProvider";
+import ErrorToaster from "../components/common/ErrorToaster";
 
 const Login = () => {
     useEffect(() => {
@@ -30,6 +31,7 @@ const Login = () => {
                 navigate(location?.state ? location.state : '/');
             })
             .catch(error => {
+                ErrorToaster("email or password is incorrect");
                 console.error(error);
             })
     }
