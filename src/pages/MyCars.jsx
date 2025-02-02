@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { format } from 'date-fns';
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import ErrorToaster from "../components/common/ErrorToaster";
 
 const MyCars = () => {
     const { user } = useContext(authContext);
@@ -25,11 +26,7 @@ const MyCars = () => {
             .catch(error => {
                 console.error(error);
                 setLoading(false);
-                Swal.fire({
-                    icon: "error",
-                    title: "Failed to fetch cars",
-                    text: "Please try again later"
-                });
+                ErrorToaster("Failed to fetch your added cars");
             });
     };
 

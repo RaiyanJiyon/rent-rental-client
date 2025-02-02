@@ -20,7 +20,7 @@ const MyBookings = () => {
                 const response = await axiosPublic.get(`/booking-cars/${user?.email}`);
                 setBookingCars(response.data);
             } catch (error) {
-                console.error(error.message);
+                console.error(error);
                 ErrorToaster("Failed to fetch bookings. Please try again later.");
             } finally {
                 setLoading(false);
@@ -45,15 +45,11 @@ const MyBookings = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = await axiosPublic.patch(`/booking-cars/${car._id}`, { bookingStatus: 'Pending' });
-                    if (response.data.modifiedCount === 1) {
+                    const response = await axiosPublic.delete(`/booking-cars/${car._id}`, { bookingStatus: 'Pending' });
+                    if (response.data.deletedCount === 1) {
                         // Update the local state
-                        setBookingCars(prevBookingCars =>
-                            prevBookingCars.map(bookingCar =>
-                                bookingCar._id === car._id
-                                    ? { ...bookingCar, bookingStatus: 'Pending' }
-                                    : bookingCar
-                            )
+                        setBookingCars((prevBookingCars) => 
+                            prevBookingCars.filter((bookingCar) => bookingCar._id !== car._id)
                         );
                         Swal.fire({
                             title: "Updated!",
@@ -72,9 +68,7 @@ const MyBookings = () => {
             }
         });
     };
-
-
-
+    
     return (
         <div className="bg-[#191919] min-h-screen border border-transparent py-20">
             <Helmet>

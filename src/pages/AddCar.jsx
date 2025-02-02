@@ -7,14 +7,12 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { authContext } from "../contexts/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import LoadingSpinner from "../components/common/LoadingSpinner";
 
 const AddCar = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    const [loading, setLoading] = useState(true);
     const [selectedFile, setSelectedFile] = useState(null);
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(authContext);
@@ -52,7 +50,6 @@ const AddCar = () => {
         try {
             const response = await axios.post('http://localhost:3000/cars', carData);
             if (response.data.insertedId) {
-                // setLoading(true);
                 Swal.fire({
                     title: "Car successfully added",
                     icon: "success",
@@ -68,19 +65,14 @@ const AddCar = () => {
                 });
             }
         } catch (error) {
+            console.error(error);
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
                 text: "Failed to add car. Please try again.",
             });
-        } finally {
-            setLoading(false);
         }
     };
-
-    // if (loading) {
-    //     return <LoadingSpinner />
-    // }
 
     const onDrop = (acceptedFiles) => {
         setSelectedFile(acceptedFiles[0]); // Get the first dropped file
@@ -122,7 +114,7 @@ const AddCar = () => {
     return (
         <div className="bg-[#191919] pb-20">
             <Helmet>
-                <title>Add Car | RentRental</title>
+                <title>Add Car | NeoDrive</title>
             </Helmet>
 
             <div className="w-11/12 md:w-1/2 mx-auto py-6 md:py-10 space-y-4">
